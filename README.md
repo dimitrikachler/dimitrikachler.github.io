@@ -88,8 +88,11 @@ format a browser can show works. Resize large scans before committing them.
 
 - `content/about.md` is scaffolding. Replace it with your own words.
 - `data/site.json` has a placeholder Google Scholar URL.
-- `assets/img/avatar.svg` is a placeholder. Drop in a real photo and point
-  `avatar` in `data/site.json` at it.
+- The profile photo goes at `assets/img/profile.jpg`. Until it exists the
+  build falls back to the grey placeholder and says so. Adjust the framing of
+  the circular crop with `avatar_position` in `data/site.json`; the first
+  number is horizontal, the second vertical, so a smaller second number moves
+  the crop toward the top of the photo.
 
 ## Custom domain
 

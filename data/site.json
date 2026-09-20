@@ -4,19 +4,53 @@
   "affiliation": "Inria Lille · MAGNET team",
   "location": "Lille, France",
   "email": "dimitri.kachler@inria.fr",
-  "avatar": "assets/img/avatar.svg",
+  "avatar": "assets/img/profile.jpg",
   "baseurl": "",
   "links": [
-    { "label": "Email",          "href": "mailto:dimitri.kachler@inria.fr", "icon": "mail" },
-    { "label": "Google Scholar", "href": "https://scholar.google.com/citations?user=REPLACE_ME", "icon": "scholar" },
-    { "label": "GitHub",         "href": "https://github.com/dimitrikachler", "icon": "github" },
-    { "label": "arXiv",          "href": "https://arxiv.org/a/kachler_d_1", "icon": "arxiv" },
-    { "label": "LinkedIn",       "href": "https://www.linkedin.com/in/dimitri-kachler/", "icon": "linkedin" }
+    {
+      "label": "Email",
+      "href": "mailto:dimitri.kachler@inria.fr",
+      "icon": "mail"
+    },
+    {
+      "label": "Google Scholar",
+      "href": "https://scholar.google.com/citations?user=REPLACE_ME",
+      "icon": "scholar"
+    },
+    {
+      "label": "GitHub",
+      "href": "https://github.com/dimitrikachler",
+      "icon": "github"
+    },
+    {
+      "label": "arXiv",
+      "href": "https://arxiv.org/a/kachler_d_1",
+      "icon": "arxiv"
+    },
+    {
+      "label": "LinkedIn",
+      "href": "https://www.linkedin.com/in/dimitri-kachler/",
+      "icon": "linkedin"
+    }
   ],
   "nav": [
-    { "label": "About",        "href": "index.html" },
-    { "label": "Publications", "href": "publications.html" },
-    { "label": "Blog",         "href": "blog/index.html" },
-    { "label": "Drawings",     "href": "drawings.html" }
-  ]
+    {
+      "label": "About",
+      "href": "index.html"
+    },
+    {
+      "label": "Publications",
+      "href": "publications.html"
+    },
+    {
+      "label": "Blog",
+      "href": "blog/index.html"
+    },
+    {
+      "label": "Drawings",
+      "href": "drawings.html"
+    }
+  ],
+  "avatar_fallback": "assets/img/avatar.svg",
+  "avatar_position": "50% 22%"
 }

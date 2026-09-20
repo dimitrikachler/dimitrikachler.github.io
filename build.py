@@ -420,7 +420,9 @@ def build_home(site: dict, pubs: list, news: list, posts: list) -> str:
 
     hero = f"""
 <header class="hero">
-  <img class="avatar" src="{html.escape(site['avatar'], quote=True)}" alt=""
+  <img class="avatar" src="{html.escape(site['avatar'], quote=True)}"
+       alt="{html.escape(site['name'], quote=True)}"
+       style="object-position: {html.escape(site.get('avatar_position', '50% 30%'), quote=True)}"
        width="96" height="96">
   <div class="hero-text">
     <h1 class="hero-name">{html.escape(site['name'])}</h1>
@@ -606,8 +608,19 @@ def load_posts() -> list:
     return posts
 
 
+def resolve_avatar(site: dict) -> dict:
+    """Fall back to the placeholder if the configured photo is not there yet."""
+    wanted = site.get("avatar", "")
+    if wanted and not (ROOT / wanted).exists():
+        fallback = site.get("avatar_fallback", "assets/img/avatar.svg")
+        print(f"  ! {wanted} not found, using {fallback}")
+        print(f"    add your photo at {wanted} and rebuild")
+        site["avatar"] = fallback
+    return site
+
+
 def main() -> int:
-    site = read_json("site.json")
+    site = resolve_avatar(read_json("site.json"))
     pubs = read_json("publications.json")
     news = read_json("news.json")
     art = read_json("art.json")
