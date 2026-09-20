@@ -88,11 +88,12 @@ format a browser can show works. Resize large scans before committing them.
 
 - `content/about.md` is scaffolding. Replace it with your own words.
 - `data/site.json` has a placeholder Google Scholar URL.
-- The profile photo goes at `assets/img/profile.jpg`. Until it exists the
-  build falls back to the grey placeholder and says so. Adjust the framing of
-  the circular crop with `avatar_position` in `data/site.json`; the first
-  number is horizontal, the second vertical, so a smaller second number moves
-  the crop toward the top of the photo.
+- The profile photo is `assets/img/dim_vatican.jpg`. Two keys in
+  `data/site.json` frame the circular crop: `avatar_zoom` is how far to zoom
+  in, and `avatar_position` is the point the zoom centres on, given as
+  horizontal then vertical percentages. A smaller second number moves the crop
+  toward the top of the photo. If the configured file is missing the build
+  falls back to the grey placeholder and says so.
 
 ## Custom domain
 

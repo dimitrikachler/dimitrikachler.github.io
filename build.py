@@ -420,10 +420,12 @@ def build_home(site: dict, pubs: list, news: list, posts: list) -> str:
 
     hero = f"""
 <header class="hero">
-  <img class="avatar" src="{html.escape(site['avatar'], quote=True)}"
-       alt="{html.escape(site['name'], quote=True)}"
-       style="object-position: {html.escape(site.get('avatar_position', '50% 30%'), quote=True)}"
-       width="96" height="96">
+  <span class="avatar">
+    <img src="{html.escape(site['avatar'], quote=True)}"
+         alt="{html.escape(site['name'], quote=True)}" width="96" height="96"
+         style="transform: scale({float(site.get('avatar_zoom', 1))});
+                transform-origin: {html.escape(site.get('avatar_position', '50% 38%'), quote=True)}">
+  </span>
   <div class="hero-text">
     <h1 class="hero-name">{html.escape(site['name'])}</h1>
     <p class="hero-role">{html.escape(site['tagline'])}</p>

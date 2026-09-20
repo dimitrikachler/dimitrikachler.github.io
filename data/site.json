@@ -4,7 +4,7 @@
   "affiliation": "Inria Lille · MAGNET team",
   "location": "Lille, France",
   "email": "dimitri.kachler@inria.fr",
-  "avatar": "assets/img/profile.jpg",
+  "avatar": "assets/img/dim_vatican.jpg",
   "baseurl": "",
   "links": [
     {
@@ -51,6 +51,7 @@
       "href": "drawings.html"
     }
   ],
+  "avatar_position": "52% 38%",
   "avatar_fallback": "assets/img/avatar.svg",
-  "avatar_position": "50% 22%"
+  "avatar_zoom": 1.7
 }
