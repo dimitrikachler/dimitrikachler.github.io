@@ -1,13 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 208 208" role="img"
      aria-label="Placeholder portrait">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#cfc7f2"/>
-      <stop offset=".55" stop-color="#bfe3d4"/>
-      <stop offset="1" stop-color="#f7d3be"/>
-    </linearGradient>
-  </defs>
-  <rect width="208" height="208" fill="url(#bg)"/>
-  <circle cx="104" cy="82" r="34" fill="#fffdf9" opacity=".92"/>
-  <path d="M30 208c0-42 33-70 74-70s74 28 74 70z" fill="#fffdf9" opacity=".92"/>
+  <rect width="208" height="208" fill="#ececed"/>
+  <circle cx="104" cy="82" r="33" fill="#c6c6ca"/>
+  <path d="M32 208c0-41 32-69 72-69s72 28 72 69z" fill="#c6c6ca"/>
 </svg>

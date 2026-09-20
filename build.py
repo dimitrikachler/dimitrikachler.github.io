@@ -475,8 +475,7 @@ def build_publications(site: dict, pubs: list) -> str:
     return f"""
 <header class="page-head">
   <h1>Publications</h1>
-  <p class="lede">Peer-reviewed papers and preprints. Names in
-  <span class="me">colour</span> are mine.</p>
+  <p class="lede">Peer-reviewed papers and preprints.</p>
 </header>
 {''.join(blocks)}
 """
