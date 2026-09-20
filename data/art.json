@@ -1,0 +1,8 @@
+{
+  "intro": "A place for the things I draw when I am not reading about gradients. Drop image files into `assets/art/` and add an entry here.",
+  "items": [
+    { "src": "assets/art/placeholder-1.svg", "title": "Untitled study", "meta": "ink on paper", "accent": "lav" },
+    { "src": "assets/art/placeholder-2.svg", "title": "Untitled study", "meta": "pencil", "accent": "mint" },
+    { "src": "assets/art/placeholder-3.svg", "title": "Untitled study", "meta": "watercolour", "accent": "peach" }
+  ]
+}

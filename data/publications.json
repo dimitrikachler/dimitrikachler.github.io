@@ -1,0 +1,63 @@
+[
+  {
+    "title": "Influcoder: Distilling Decoders' Gradient Influence Rankings into an Encoder for Data Attribution",
+    "authors": ["Dimitri Kachler", "Damien Sileo", "Pascal Denis"],
+    "venue": "AACL 2026",
+    "status": "accepted",
+    "year": 2026,
+    "accent": "lav",
+    "tags": ["data attribution", "influence functions", "efficiency"],
+    "abstract": "Influence functions estimate how individual training samples precondition a model's outputs, but they are too slow and too storage-hungry to run over large corpora. Influcoder distills decoder gradient influence rankings into a small encoder, making influence-based data attribution cheap enough to use at dataset scale.",
+    "links": [
+      { "label": "arXiv", "href": "https://arxiv.org/abs/2606.13668" },
+      { "label": "PDF",   "href": "https://arxiv.org/pdf/2606.13668" }
+    ]
+  },
+  {
+    "title": "Reasoning Core: Designing Broad Procedural Data for Completion-Supervised Reasoning Training",
+    "authors": ["Damien Sileo", "Valentin Lacombe", "Dimitri Kachler"],
+    "venue": "arXiv preprint",
+    "status": "preprint",
+    "year": 2026,
+    "accent": "mint",
+    "tags": ["procedural data", "reasoning", "post-training"],
+    "abstract": "A collection of 50 procedural generators spanning mathematics, logic, planning, state tracking, formal languages, structured data, games, causality and code, each with semantic scorers, difficulty controls and task evaluators. Under a matched completion-supervised protocol it outperforms Procedural Warmup, Reasoning Gym and SynLogic on DROP, LogiQA and ARC-Challenge.",
+    "links": [
+      { "label": "arXiv",   "href": "https://arxiv.org/abs/2608.05148" },
+      { "label": "PDF",     "href": "https://arxiv.org/pdf/2608.05148" },
+      { "label": "Code",    "href": "https://github.com/sileod/reasoning-core" },
+      { "label": "Dataset", "href": "https://huggingface.co/datasets/sileod/reasoning_core" }
+    ]
+  },
+  {
+    "title": "CordisBench: Can Language Models Reason About Component Lifecycles in Dynamic Agent Harnesses?",
+    "authors": ["Damien Sileo", "Dimitri Kachler"],
+    "venue": "arXiv preprint",
+    "status": "preprint",
+    "year": 2026,
+    "accent": "sky",
+    "tags": ["benchmark", "agents", "evaluation"],
+    "abstract": "A 1,200-question benchmark for lifecycle reasoning in dynamic agent harnesses, where a local plugin change propagates through dependencies and cleanup. Models handle small systems well but degrade as more interactions become relevant, especially when predicting final state across teardown orders.",
+    "links": [
+      { "label": "arXiv",   "href": "https://arxiv.org/abs/2609.01600" },
+      { "label": "PDF",     "href": "https://arxiv.org/pdf/2609.01600" },
+      { "label": "Code",    "href": "https://github.com/sileod/cordis-bench" },
+      { "label": "Dataset", "href": "https://huggingface.co/datasets/sileod/cordis-bench" }
+    ]
+  },
+  {
+    "title": "Open-Endedness Induced Through a Predator-Prey Scenario Using Modular Robots",
+    "authors": ["Dimitri Kachler", "Karine Miras"],
+    "venue": "IEEE SSCI 2023",
+    "status": "published",
+    "year": 2023,
+    "accent": "peach",
+    "tags": ["evolutionary robotics", "open-endedness"],
+    "abstract": "Investigates whether a predator-prey scenario can induce open-ended evolution in modular robots with fixed morphologies and evolving controllers. A tagging system changes how individuals perceive each other; adaptive strategies emerge, though emergence depends on conditioning reproduction on an explicit behavioural criterion.",
+    "links": [
+      { "label": "IEEE",  "href": "https://ieeexplore.ieee.org/document/10372055" },
+      { "label": "arXiv", "href": "https://arxiv.org/abs/2309.11275" },
+      { "label": "PDF",   "href": "https://arxiv.org/pdf/2309.11275" }
+    ]
+  }
+]

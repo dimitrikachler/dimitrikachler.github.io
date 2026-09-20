@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<meta name="author" content="{{name}}">
+<link rel="canonical" href="{{canonical}}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<link rel="icon" href="{{prefix}}assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="{{name}} — Blog"
+      href="{{prefix}}blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="{{prefix}}assets/css/main.css">
+<script>
+  // Set the theme before first paint so the page never flashes.
+  (function () {
+    try {
+      var saved = localStorage.getItem('theme');
+      if (saved === 'dark' || saved === 'light') {
+        document.documentElement.setAttribute('data-theme', saved);
+      }
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="mesh" aria-hidden="true">
+  <span class="blob b1"></span><span class="blob b2"></span>
+  <span class="blob b3"></span><span class="blob b4"></span>
+</div>
+
+<div class="shell">
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <a class="ident" href="{{prefix}}index.html">
+        <img class="avatar" src="{{avatar}}" alt="" width="104" height="104">
+        <span class="ident-name">{{name}}</span>
+      </a>
+      <p class="ident-role">{{tagline}}</p>
+      <p class="ident-affil">{{affiliation}}</p>
+      <p class="ident-loc">{{location}}</p>
+
+      <div class="ident-links">{{links}}</div>
+
+      <nav class="nav" aria-label="Main">{{nav}}</nav>
+
+      <button class="theme-toggle" type="button" data-theme-toggle
+              aria-label="Switch colour theme">
+        <span class="theme-dot"></span><span class="theme-label">Theme</span>
+      </button>
+    </div>
+  </aside>
+
+  <main class="main {{main_class}}" id="main">
+    {{body}}
+    <footer class="footer">
+      <span>© {{year}} {{name}}</span>
+      <span class="footer-sep">·</span>
+      <span>built with a small Python script</span>
+    </footer>
+  </main>
+</div>
+
+<script src="{{prefix}}assets/js/main.js"></script>
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script defer
+        src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script defer
+        src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$',  right: '$',  display: false}], throwOnError: false});"></script>
+</body>
+</html>

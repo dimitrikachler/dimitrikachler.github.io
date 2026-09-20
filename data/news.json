@@ -1,0 +1,6 @@
+[
+  { "date": "2026-09", "text": "**CordisBench** is on arXiv: a 1,200-question benchmark for lifecycle reasoning in dynamic agent harnesses.", "accent": "sky" },
+  { "date": "2026-08", "text": "**Reasoning Core** is on arXiv: 50 procedural generators for completion-supervised reasoning training.", "accent": "mint" },
+  { "date": "2026-06", "text": "**Influcoder** accepted at **AACL 2026**. Influence-based data attribution, cheap enough to run at dataset scale.", "accent": "lav" },
+  { "date": "2025-11", "text": "Started my PhD at **Inria Lille** in the **MAGNET** team, working on NLP with Damien Sileo and Pascal Denis.", "accent": "peach" }
+]
