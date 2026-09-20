@@ -418,6 +418,18 @@ def publication_card(pub: dict, me: str, *, compact: bool = False) -> str:
 def build_home(site: dict, pubs: list, news: list, posts: list) -> str:
     about = md((ROOT / "content" / "about.md").read_text(encoding="utf-8"))
 
+    hero = f"""
+<header class="hero">
+  <img class="avatar" src="{html.escape(site['avatar'], quote=True)}" alt=""
+       width="96" height="96">
+  <div class="hero-text">
+    <h1 class="hero-name">{html.escape(site['name'])}</h1>
+    <p class="hero-role">{html.escape(site['tagline'])}</p>
+    <p class="hero-affil">{md_inline(site['affiliation'])}
+      <span class="hero-sep">·</span> {html.escape(site['location'])}</p>
+  </div>
+</header>"""
+
     news_html = "".join(
         f'<li class="news-item accent-{n.get("accent", "lav")}">'
         f'<span class="news-date">{html.escape(pretty_date(n["date"]))}</span>'
@@ -441,7 +453,7 @@ def build_home(site: dict, pubs: list, news: list, posts: list) -> str:
   <ul class="mini-posts">{rows}</ul>
 </section>"""
 
-    return f"""
+    return f"""{hero}
 <section class="section intro">
   <div class="prose">{about}</div>
 </section>

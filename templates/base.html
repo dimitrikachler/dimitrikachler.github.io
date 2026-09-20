@@ -33,37 +33,27 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<div class="shell">
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-      <a class="ident" href="{{prefix}}index.html">
-        <img class="avatar" src="{{avatar}}" alt="" width="104" height="104">
-        <span class="ident-name">{{name}}</span>
-      </a>
-      <p class="ident-role">{{tagline}}</p>
-      <p class="ident-affil">{{affiliation}}</p>
-      <p class="ident-loc">{{location}}</p>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="{{prefix}}index.html">{{name}}</a>
+    <nav class="nav" aria-label="Main">{{nav}}</nav>
+    <button class="theme-toggle" type="button" data-theme-toggle
+            aria-label="Switch colour theme">
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
 
-      <div class="ident-links">{{links}}</div>
+<main class="main {{main_class}}" id="main">
+  {{body}}
+</main>
 
-      <nav class="nav" aria-label="Main">{{nav}}</nav>
-
-      <button class="theme-toggle" type="button" data-theme-toggle
-              aria-label="Switch colour theme">
-        <span class="theme-label">Theme</span>
-      </button>
-    </div>
-  </aside>
-
-  <main class="main {{main_class}}" id="main">
-    {{body}}
-    <footer class="footer">
-      <span>© {{year}} {{name}}</span>
-      <span class="footer-sep">·</span>
-      <span>built with a small Python script</span>
-    </footer>
-  </main>
-</div>
+<footer class="footer">
+  <div class="footer-inner">
+    <span>© {{year}} {{name}}</span>
+    <div class="ident-links">{{links}}</div>
+  </div>
+</footer>
 
 <script src="{{prefix}}assets/js/main.js"></script>
 <link rel="stylesheet"
