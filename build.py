@@ -7,6 +7,7 @@ and the finished site appears in `_site/`.
 
 from __future__ import annotations
 
+import hashlib
 import html
 import json
 import os
@@ -331,6 +332,17 @@ def icon(name: str) -> str:
 TEMPLATE = (ROOT / "templates" / "base.html").read_text(encoding="utf-8")
 
 
+def asset_version(relpath: str) -> str:
+    """Short content hash, appended to asset URLs so browsers refetch on change."""
+    path = ROOT / relpath
+    if not path.exists():
+        return "0"
+    return hashlib.sha256(path.read_bytes()).hexdigest()[:8]
+
+
+CSS_VERSION = asset_version("assets/css/main.css")
+
+
 def render_page(site: dict, *, slug: str, title: str, body: str,
                 depth: int = 0, description: str = "",
                 active: str = "", wide: bool = False) -> str:
@@ -368,6 +380,7 @@ def render_page(site: dict, *, slug: str, title: str, body: str,
         "year": str(datetime.now().year),
         "main_class": "wide" if wide else "",
         "canonical": f"{SITE_URL}/{'' if slug == 'index' else slug}",
+        "cssv": CSS_VERSION,
     }
     page = TEMPLATE
     for key, value in values.items():
@@ -383,6 +396,31 @@ def write(path: Path, content: str) -> None:
 # --------------------------------------------------------------------------
 # page builders
 # --------------------------------------------------------------------------
+
+
+def background_crop(zoom: float, position: str) -> tuple[str, str]:
+    """Express a zoom around a focal point as background-size and -position.
+
+    A background is laid out by aligning the image point at p% with the
+    container point at p%, so the focal fraction f under zoom z needs
+    p = 100 (f z - 0.5) / (z - 1). Transforms would be simpler, but a
+    transformed child is not clipped by a rounded parent in every browser.
+    """
+    zoom = max(1.0, float(zoom))
+    parts = (position or "50% 38%").replace("%", "").split()
+    try:
+        fx, fy = float(parts[0]) / 100, float(parts[1]) / 100
+    except (ValueError, IndexError):
+        fx, fy = 0.5, 0.38
+
+    if zoom <= 1.0001:
+        return "cover", "50% 50%"
+
+    def axis(f: float) -> float:
+        return min(100.0, max(0.0, 100 * (f * zoom - 0.5) / (zoom - 1)))
+
+    return f"{zoom * 100:.0f}%", f"{axis(fx):.1f}% {axis(fy):.1f}%"
+
 
 def publication_card(pub: dict, me: str, *, compact: bool = False) -> str:
     authors = ", ".join(highlight_self(a, me) for a in pub["authors"])
@@ -418,14 +456,15 @@ def publication_card(pub: dict, me: str, *, compact: bool = False) -> str:
 def build_home(site: dict, pubs: list, news: list, posts: list) -> str:
     about = md((ROOT / "content" / "about.md").read_text(encoding="utf-8"))
 
+    zoom_pct, focus = background_crop(
+        site.get("avatar_zoom", 1), site.get("avatar_position", "50% 38%"))
+
     hero = f"""
 <header class="hero">
-  <span class="avatar">
-    <img src="{html.escape(site['avatar'], quote=True)}"
-         alt="{html.escape(site['name'], quote=True)}" width="96" height="96"
-         style="transform: scale({float(site.get('avatar_zoom', 1))});
-                transform-origin: {html.escape(site.get('avatar_position', '50% 38%'), quote=True)}">
-  </span>
+  <span class="avatar" role="img"
+        aria-label="{html.escape(site['name'], quote=True)}"
+        style="background-image: url('{html.escape(site['avatar'], quote=True)}');
+               background-size: {zoom_pct}; background-position: {focus}"></span>
   <div class="hero-text">
     <h1 class="hero-name">{html.escape(site['name'])}</h1>
     <p class="hero-role">{html.escape(site['tagline'])}</p>

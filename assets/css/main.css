@@ -109,18 +109,11 @@ h1, h2, h3, h4 {
   display: block;
   width: 104px; height: 104px;
   border-radius: 50%;
-  overflow: hidden;
-  /* clip-path also clips transformed children, which overflow alone does not */
-  clip-path: circle(50% at 50% 50%);
-  background: var(--bg-tint);
-  isolation: isolate;
+  background-color: var(--bg-tint);
+  background-repeat: no-repeat;
+  background-position: center;
 }
-.avatar img {
-  display: block;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-}
+
 .hero-name {
   font-size: 30px; font-weight: 600;
   letter-spacing: -.02em;

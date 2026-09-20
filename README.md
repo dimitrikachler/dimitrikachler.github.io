@@ -92,8 +92,14 @@ format a browser can show works. Resize large scans before committing them.
   `data/site.json` frame the circular crop: `avatar_zoom` is how far to zoom
   in, and `avatar_position` is the point the zoom centres on, given as
   horizontal then vertical percentages. A smaller second number moves the crop
-  toward the top of the photo. If the configured file is missing the build
-  falls back to the grey placeholder and says so.
+  toward the top of the photo. The build turns those into a background
+  position, so no transform is involved and the circle clips cleanly. If the
+  configured file is missing the build falls back to the grey placeholder and
+  says so.
+
+The stylesheet URL carries a hash of its own contents, so a browser fetches
+the new file as soon as the CSS changes. You should never need to hard
+refresh.
 
 ## Custom domain
 
