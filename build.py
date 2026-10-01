@@ -482,20 +482,6 @@ def build_home(site: dict, pubs: list, news: list, posts: list) -> str:
     selected = "".join(publication_card(p, site["name"], compact=True)
                        for p in pubs[:3])
 
-    posts_html = ""
-    if posts:
-        rows = "".join(
-            f'<li class="mini-post accent-{p["meta"].get("accent", "lav")}">'
-            f'<a href="blog/{p["slug"]}.html">{html.escape(p["meta"]["title"])}</a>'
-            f'<span class="mini-date">{html.escape(pretty_date(str(p["meta"]["date"])))}</span>'
-            f"</li>" for p in posts[:3])
-        posts_html = f"""
-<section class="section">
-  <div class="section-head"><h2>From the blog</h2>
-    <a class="more" href="blog/index.html">all posts</a></div>
-  <ul class="mini-posts">{rows}</ul>
-</section>"""
-
     return f"""{hero}
 <section class="section intro">
   <div class="prose">{about}</div>
@@ -511,7 +497,6 @@ def build_home(site: dict, pubs: list, news: list, posts: list) -> str:
   <div class="section-head"><h2>News</h2></div>
   <ul class="news">{news_html}</ul>
 </section>
-{posts_html}
 """
 
 
@@ -538,7 +523,7 @@ def build_publications(site: dict, pubs: list) -> str:
 
 def build_blog_index(site: dict, posts: list) -> str:
     if not posts:
-        rows = '<p class="empty">No posts yet. Soon.</p>'
+        rows = ""
     else:
         rows = "".join(f"""
 <article class="post-card accent-{p['meta'].get('accent', 'lav')}">
@@ -554,12 +539,12 @@ def build_blog_index(site: dict, posts: list) -> str:
                              for t in p['meta'].get('tags', []))}</div>
 </article>""" for p in posts)
 
+    feed = ('<p class="lede"><a class="pill-link" href="feed.xml">RSS</a></p>'
+            if posts else "")
     return f"""
 <header class="page-head">
   <h1>Blog</h1>
-  <p class="lede">Notes from the PhD: things I read, things that broke, and
-  things I wish someone had written down for me.</p>
-  <p class="lede"><a class="pill-link" href="feed.xml">RSS</a></p>
+  {feed}
 </header>
 <div class="post-list">{rows}</div>
 """
