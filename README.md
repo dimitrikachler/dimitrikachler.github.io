@@ -31,6 +31,12 @@ python3 -m http.server 8000 --directory _site
 | Colours, type, layout | `assets/css/main.css` |
 | Page shell (head, sidebar, footer) | `templates/base.html` |
 
+## Turning the blog back on
+
+The blog is off. Set `blog_enabled` to `true` in `data/site.json` and it
+returns: the nav link, the blog pages and the RSS feed all come back on the
+next build. Nothing else needs changing.
+
 ## Writing a post
 
 Create `content/posts/YYYY-MM-DD-slug.md`:

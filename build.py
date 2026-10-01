@@ -347,8 +347,11 @@ def render_page(site: dict, *, slug: str, title: str, body: str,
                 depth: int = 0, description: str = "",
                 active: str = "", wide: bool = False) -> str:
     prefix = "../" * depth
+    blog_on = site.get("blog_enabled", True)
     nav_items = []
     for item in site["nav"]:
+        if not blog_on and item["href"].startswith("blog/"):
+            continue
         is_active = item["href"].split("/")[0].replace(".html", "") == active
         href = prefix + item["href"]
         nav_items.append(
@@ -381,6 +384,9 @@ def render_page(site: dict, *, slug: str, title: str, body: str,
         "main_class": "wide" if wide else "",
         "canonical": f"{SITE_URL}/{'' if slug == 'index' else slug}",
         "cssv": CSS_VERSION,
+        "feedlink": (f'<link rel="alternate" type="application/rss+xml" '
+                     f'title="{html.escape(site["name"], quote=True)} — Blog" '
+                     f'href="{prefix}blog/feed.xml">' if blog_on else ""),
     }
     page = TEMPLATE
     for key, value in values.items():
@@ -680,19 +686,21 @@ def main() -> int:
         body=build_drawings(site, art), active="drawings",
         description="Drawings and sketches.", wide=True))
 
-    write(OUT / "blog" / "index.html", render_page(
-        site, slug="blog/index.html", title="Blog",
-        body=build_blog_index(site, posts), depth=1, active="blog",
-        description="Notes from the PhD."))
+    if site.get("blog_enabled", True):
+        write(OUT / "blog" / "index.html", render_page(
+            site, slug="blog/index.html", title="Blog",
+            body=build_blog_index(site, posts), depth=1, active="blog"))
 
-    for post in posts:
-        write(OUT / "blog" / f"{post['slug']}.html", render_page(
-            site, slug=f"blog/{post['slug']}.html",
-            title=post["meta"]["title"], body=build_post(site, post),
-            depth=1, active="blog",
-            description=post["meta"].get("summary", "")))
+        for post in posts:
+            write(OUT / "blog" / f"{post['slug']}.html", render_page(
+                site, slug=f"blog/{post['slug']}.html",
+                title=post["meta"]["title"], body=build_post(site, post),
+                depth=1, active="blog",
+                description=post["meta"].get("summary", "")))
 
-    write(OUT / "blog" / "feed.xml", build_feed(site, posts))
+        write(OUT / "blog" / "feed.xml", build_feed(site, posts))
+    else:
+        print("  blog disabled (blog_enabled in data/site.json)")
 
     write(OUT / "404.html", render_page(
         site, slug="404.html", title="Not found",
