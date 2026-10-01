@@ -428,8 +428,9 @@ def publication_card(pub: dict, me: str, *, compact: bool = False) -> str:
         f'<a class="pill-link" href="{html.escape(l["href"], quote=True)}" '
         f'target="_blank" rel="noopener">{html.escape(l["label"])}</a>'
         for l in pub.get("links", []))
-    tags = "".join(f'<span class="tag">{html.escape(t)}</span>'
-                   for t in pub.get("tags", []))
+    # The home page lists work compactly, without the topic tags.
+    tags = "" if compact else "".join(
+        f'<span class="tag">{html.escape(t)}</span>' for t in pub.get("tags", []))
     status = pub.get("status", "")
     badge = ""
     if status == "accepted":
