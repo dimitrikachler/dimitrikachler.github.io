@@ -86,7 +86,6 @@ format a browser can show works. Resize large scans before committing them.
 
 ## Still to personalise
 
-- `content/about.md` is scaffolding. Replace it with your own words.
 - `data/site.json` has a placeholder Google Scholar URL.
 - The profile photo is `assets/img/dim_vatican.jpg`. Two keys in
   `data/site.json` frame the circular crop: `avatar_zoom` is how far to zoom
