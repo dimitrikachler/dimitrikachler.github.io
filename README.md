@@ -88,7 +88,12 @@ badge next to the venue.
 ## Adding drawings
 
 Put image files in `assets/art/`, then add entries to `data/art.json`. Any
-format a browser can show works. Resize large scans before committing them.
+format a browser can show works. Leave `intro` empty and no text appears
+above the grid.
+
+Resize large scans before committing them. The three drawings in there are
+full-resolution phone photos of around 1 MB each, displayed about 400 pixels
+wide, so there is a lot of headroom if the page ever feels slow.
 
 ## Still to personalise
 

@@ -587,10 +587,12 @@ def build_drawings(site: dict, art: dict) -> str:
     <span class="art-meta">{html.escape(a.get('meta', ''))}</span></figcaption>
 </figure>""" for a in art.get("items", []))
 
+    intro = art.get("intro", "").strip()
+    lede = f'<p class="lede">{md_inline(intro)}</p>' if intro else ""
     return f"""
 <header class="page-head">
   <h1>Drawings</h1>
-  <p class="lede">{md_inline(art.get('intro', ''))}</p>
+  {lede}
 </header>
 <div class="art-grid">{items}</div>
 """
