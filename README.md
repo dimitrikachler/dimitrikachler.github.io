@@ -23,6 +23,7 @@ python3 -m http.server 8000 --directory _site
 | I want to change... | Edit |
 | --- | --- |
 | The About page text | `content/about.md` |
+| The blurb on the Blog page | `content/blog.md` |
 | Blog posts | `content/posts/*.md` |
 | Publications | `data/publications.json` |
 | The news list on the home page | `data/news.json` |
@@ -31,11 +32,12 @@ python3 -m http.server 8000 --directory _site
 | Colours, type, layout | `assets/css/main.css` |
 | Page shell (head, sidebar, footer) | `templates/base.html` |
 
-## Turning the blog back on
+## The blog
 
-The blog is off. Set `blog_enabled` to `true` in `data/site.json` and it
-returns: the nav link, the blog pages and the RSS feed all come back on the
-next build. Nothing else needs changing.
+`blog_enabled` in `data/site.json` switches the whole blog on and off: the nav
+link, the pages and the RSS feed. The text under the Blog heading lives in
+`content/blog.md`. While there are no posts the page says so and the RSS link
+stays hidden; both change by themselves once a post exists.
 
 ## Writing a post
 

@@ -150,6 +150,7 @@ h1, h2, h3, h4 {
 .more:hover { color: var(--accent); }
 
 .page-head { margin-bottom: 40px; }
+.page-head .prose { margin-top: 10px; max-width: 58ch; color: var(--ink-soft); }
 .page-head h1 { font-size: 32px; letter-spacing: -.02em; }
 .lede { margin: 10px 0 0; font-size: 16px; color: var(--ink-soft); max-width: 58ch; }
 
@@ -287,6 +288,7 @@ h2:hover > .anchor, h3:hover > .anchor { opacity: 1; }
 
 
 .post-list { display: flex; flex-direction: column; }
+.empty { color: var(--ink-faint); padding: 4px 0; }
 .post-card { padding: 22px 0; border-bottom: 1px solid var(--line); }
 .post-title { font-size: 20px; margin: 5px 0 7px; }
 .post-title a { color: var(--ink); text-decoration: none; }

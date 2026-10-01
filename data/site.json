@@ -54,5 +54,5 @@
   "avatar_position": "52.5% 44%",
   "avatar_fallback": "assets/img/avatar.svg",
   "avatar_zoom": 1.2,
-  "blog_enabled": false
+  "blog_enabled": true
 }

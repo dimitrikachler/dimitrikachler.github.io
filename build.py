@@ -530,7 +530,7 @@ def build_publications(site: dict, pubs: list) -> str:
 
 def build_blog_index(site: dict, posts: list) -> str:
     if not posts:
-        rows = ""
+        rows = '<p class="empty"><em>No blogs yet</em></p>'
     else:
         rows = "".join(f"""
 <article class="post-card accent-{p['meta'].get('accent', 'lav')}">
@@ -546,11 +546,15 @@ def build_blog_index(site: dict, posts: list) -> str:
                              for t in p['meta'].get('tags', []))}</div>
 </article>""" for p in posts)
 
+    intro_path = ROOT / "content" / "blog.md"
+    intro = (f'<div class="prose">{md(intro_path.read_text(encoding="utf-8"))}</div>'
+             if intro_path.exists() else "")
     feed = ('<p class="lede"><a class="pill-link" href="feed.xml">RSS</a></p>'
             if posts else "")
     return f"""
 <header class="page-head">
   <h1>Blog</h1>
+  {intro}
   {feed}
 </header>
 <div class="post-list">{rows}</div>
